@@ -97,7 +97,7 @@ _Jangan lupa baca deskripsi grup yaa kak_ \n\n _*Stay Healthy*_ `
                 anu_user = w.vname || w.notify || num.split('@')[0]
                 time_wel = moment.tz('Asia/Jakarta').format("HH:mm")
                 memeg = mdata.participants.length
-                out = `@${num.split('@')[0]} Keluar dari grup *${mdata.subject}* \nSelamat tinggal balik lagi titip gorengan yaa`
+                out = `@${num.split('@')[0]} Keluar dari grup *${mdata.subject}* \nSelamat tinggal:)`
                 buff = await getBuffer(pp_user)
                 buttons = [
 					{ buttonId: `o`, buttonText: { displayText: 'Bye' }, type: 1 },
