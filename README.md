@@ -1,4 +1,5 @@
 #Deploy
+https://git.heroku.com/bot-self-farz.git
 
 # Thanks To
 * [`Baileys`](https://github.com/adiwajshing/Baileys)
