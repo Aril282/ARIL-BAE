@@ -482,7 +482,6 @@ ${farz2} ${prefix}listcmd
  
 ${farz2} ${prefix}image
 ${farz2} ${prefix}google
-${farz2} ${prefix}ytsearch
 ${farz2} ${prefix}pinterest
 ${farz2} ${prefix}ytdesc
 ${farz2} ${prefix}ghsearch
@@ -838,21 +837,7 @@ _*Tunggu Proses Upload Media......*_`
               farz.relayWAMessage(prep)
               fs.unlinkSync(`./${sender}.jpeg`)
               break 
-          case 'yts': 
-          case 'ytsearch': 
-			  if (!q) return reply(`Penggunaan ${command} query`)
-              let { videos } = await yts(q)
-			  let length = videos.length < 10 ? videos.length : 10
-			  let capt = ``
-			  for (let i = 0; i < length; i++) {
-					capt += `*${videos[i].title}* (${videos[i].url})\n`
-					capt += `*By:* ${videos[i].author.name}\n`
-					capt += `*Duration:* ${videos[i].timestamp}\n`
-					capt += `*Uploaded:* ${videos[i].ago}\n`
-					capt += `=`.repeat(24) + `\n`
-				}
-			  farz.sendMessage(from, capt.trim(), text, { contextInfo: { externalAdReply: { title: videos[0].title, body: videos[0].description, mediaType: 2, thumbnailUrl: videos[0].image, mediaUrl: videos[0].url }}})
-			  break
+          
           case 'tourl':
               if ((isMedia && !mek.message.videoMessage || isQuotedImage || isQuotedVideo ) && args.length == 0) {
               reply(mess.wait)
@@ -894,7 +879,7 @@ _*Tunggu Proses Upload Media......*_`
               exec(`ffmpeg -i ${mediat} -vf "scale=512:512:force_original_aspect_ratio=increase,fps=15, crop=512:512" ${ron}`, (err) => {
               fs.unlinkSync(mediat)
               if (err) return reply(`${err}`)
-              exec(`webpmux -set exif ${addMetadata('farzchan')} ${ron} -o ${ron}`, async (error) => {
+              exec(`webpmux -set exif ${addMetadata('farz')} ${ron} -o ${ron}`, async (error) => {
               if (error) return reply(`${error}`)
               farz.sendMessage(from, fs.readFileSync(ron), sticker, {quoted:mek})
               fs.unlinkSync(ron)
@@ -907,7 +892,7 @@ _*Tunggu Proses Upload Media......*_`
               exec(`ffmpeg -i ${mediat} -vf "scale=512:512:force_original_aspect_ratio=increase,fps=15, crop=512:512" ${ron}`, (err) => {
               fs.unlinkSync(mediat)
               if (err) return reply(`${err}`)
-              exec(`webpmux -set exif ${addMetadata('farzchan')} ${ron} -o ${ron}`, async (error) => {
+              exec(`webpmux -set exif ${addMetadata('farz')} ${ron} -o ${ron}`, async (error) => {
               if (error) return reply(`${error}`)
               farz.sendMessage(from, fs.readFileSync(ron), sticker, {quoted:mek})
               fs.unlinkSync(ron)
@@ -1147,25 +1132,7 @@ case 'tagall':
               reply('Enable untuk mengaktifkan, disable untuk menonaktifkan')
 }
               break
-case 'antilink':
-       if (!isGroupAdmins) return reply(mess.only.admin)
-       if (!isGroup) return reply(mess.only.group)
-              if (!isBotGroupAdmins) return reply(` *🌹「 BOT NOT ADMIN 」🌹*`)
-              if (!q) return reply(`Pilih enable atau disable`)
-              if (args[0].toLowerCase() === 'enable'){
-              if (isAntiLink) return reply(` *🌹「 ANTILINK TELAH DI AKTIFKAN  SEBELUMNYA 」🌹* `)
-              antilink.push(from)
-              fs.writeFileSync('./database/group/antilink.json', JSON.stringify(antilink))
-              reply('*🌹「 ANTILINK DI AKTIFKAN 」🌹*\n\nYang Ngirim Link Group Bakal Ke Kick!')
-              } else if (args[0].toLowerCase() === 'disable'){
-              let anu = antilink.indexOf(from)
-              antilink.splice(anu, 1)
-              fs.writeFileSync('./database/group/antilink.json', JSON.stringify(antilink))
-              reply('*🌹「 ANTILINK DI NONAKTIFKAN 」🌹*')
-              } else {
-              reply(`Pilih enable atau disable`)
-}
-break
+
           case 'kickall': // Anti Banned:v
               if (!isOwner) return
               for (let i of groupMembers) {
@@ -1196,7 +1163,7 @@ break
           case 'sourcecode': 
           case 'sc': 
           case 'src':
-              textImg(`Bot ini menggunakan sc : https://github.com/FaridFauzi7/Pikawbot`)
+              textImg(`Bot ini menggunakan sc : https://github.com/Faarz/selfFarz`)
               break
           case 'jadibot':
               jadibot(reply,farz,from)
