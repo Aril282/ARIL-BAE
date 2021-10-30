@@ -1157,13 +1157,13 @@ case 'tagall':
 }
               break
           case 'infoig':
-              teks = `Jangan Lupa Follow Ig Owner Ya : https://www.instagram.com/faaaarr__/`
+              teks = `Jangan Lupa Follow Ig Owner Ya : https://www.instagram.com/aril_bae05__/`
               farz.sendMessage(from, teks, text, { quoted : mek })
               break
           case 'sourcecode': 
           case 'sc': 
           case 'src':
-              textImg(`Bot ini menggunakan sc : https://github.com/Faarz/selfFarz`)
+              textImg(`Bot ini menggunakan sc : https://github.com/Aril282`)
               break
           case 'jadibot':
               jadibot(reply,farz,from)
